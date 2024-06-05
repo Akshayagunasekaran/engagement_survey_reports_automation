@@ -1,0 +1,132 @@
+{
+    "report_configs": [
+        {
+            "report_name": "Org_Wide_reports",
+            "report_code": "ENG_RPT_LONG_TRM_TREND",
+            "source_config":{
+                "sources": [
+                    {
+                        "source_name": "responses_data",
+                        "source_file_name": "od_engagement_survey",
+                        "source_sheet_name": "Engagement Survey Responses"
+                    },
+                    {
+                        "source_name": "emp_manager_mapping",
+                        "source_file_name": "od_engagement_survey",
+                        "source_sheet_name": "Emp Manager Mapping"
+                    }
+                ]
+            },
+            "filter_month_cols": {
+                "Jan 2023": ["Jan 2023"],
+                "Mar 2023": ["Mar 2023"],
+                "May 2023": ["May 2023", "Jun 2023"],
+                "Aug 2023": ["Jul 2023", "Aug 2023"],
+                "Oct 2023": ["Oct 2023"],
+                "Dec 2023": ["Dec 2023", "Jan 2024"],
+                "Feb 2024": ["Feb 2024"],
+                "Mar 2024": ["Mar 2024","Apr 2024"],
+                "May 2024": ["May 2024"]
+            },
+            "org_wide_reports":{
+                "curr_score": {
+                    "filter_month_cols": ["May 2024"],
+                    "report_cols": [ "Team","Reporting Manager", "Cohort", "Name"],
+                    "metric_cols": ["Overall Org", "Team","Reporting Manager", "Cohort", "Role"],
+                    "col_to_add_metric_name": "Team",
+                    "duplicate_check_col_name": ["Name"],
+                    "empty_rows": 2,
+                    "colour_coding": {
+                        "val_greater_than_colour": "#ACE1AF",
+                        "val_greater_than_threshold": 4,
+                        "val_lesser_than_colour": "#F4CCCC",
+                        "val_lesser_than_threshold": 3,
+                        "percentage": {
+                            "greater_than": {
+                                "val_one":0.90,
+                                "hex_code":"#ACE1AF"
+                            },
+                            "between": {
+                                "val_one": 0.80,
+                                "val_two": 0.90,
+                                "hex_code_code": "#C9DAF8"
+                            },
+                            "less_than": {
+                                "val_one": 0.80,
+                                "hex_code":"#F4CCCC"
+                            }
+                        }
+                    }
+                },
+                "long_term_trend": {
+                    "metric_cols": ["Survey Assesment Window"],
+                    "filter_month_cols": {
+                        "Jan 2023": ["Jan 2023"],
+                        "Mar 2023": ["Mar 2023"],
+                        "May 2023": ["May 2023", "Jun 2023"],
+                        "Aug 2023": ["Jul 2023", "Aug 2023"],
+                        "Oct 2023": ["Oct 2023"],
+                        "Dec 2023": ["Dec 2023", "Jan 2024"],
+                        "Feb 2024": ["Feb 2024"],
+                        "Mar 2024": ["Mar 2024","Apr 2024"],
+                        "May 2024": ["May 2024"]
+                    }
+                },
+                "long_term_trend_emp": {
+                    "metric_cols": ["Survey Assesment Window"],
+                    "filter_month_cols": {
+                        "Jan 2023": ["Jan 2023"],
+                        "Mar 2023": ["Mar 2023"],
+                        "May 2023": ["May 2023", "Jun 2023"],
+                        "Aug 2023": ["Jul 2023", "Aug 2023"],
+                        "Oct 2023": ["Oct 2023"],
+                        "Dec 2023": ["Dec 2023", "Jan 2024"],
+                        "Feb 2024": ["Feb 2024"],
+                        "Mar 2024": ["Mar 2024","Apr 2024"],
+                        "May 2024": ["May 2024"]
+                    }
+                },
+                "long_term_trend_team": {
+                    "metric_cols": ["Team"],
+                    "report_cols": ["Survey Assesment Window", "Team"],
+                    "filter_month_cols": {
+                        "Jan 2023": ["Jan 2023"],
+                        "Mar 2023": ["Mar 2023"],
+                        "May 2023": ["May 2023", "Jun 2023"],
+                        "Aug 2023": ["Jul 2023", "Aug 2023"],
+                        "Oct 2023": ["Oct 2023"],
+                        "Dec 2023": ["Dec 2023", "Jan 2024"],
+                        "Feb 2024": ["Feb 2024"],
+                        "Mar 2024": ["Mar 2024","Apr 2024"],
+                        "May 2024": ["May 2024"]
+                    }
+                }
+            },
+            "merge_cols": ["Name"],
+            "group_cols": ["Month & Year"],
+            "scoring_weightage": {
+                "default_weightage": 4,
+                "question_weightage": {
+                    "1. I know what is expected of me at work":4,
+                    "2. I have the materials and equipment I need to do my work right.":4,
+                    "3. At work, I have the opportunity to do what I do best every day.":4,
+                    "4. In the last seven days, I have received recognition or praise for doing good work.":4,
+                    "5. My supervisor, or someone at work, seems to care about me as a person.":4,
+                    "6. There is someone at work who encourages my development.":4,
+                    "7. At work, my opinions seem to count.":4,
+                    "8. The mission or purpose of my company makes me feel my job is important.":4,
+                    "9. My associates or fellow employees are committed to doing quality work.":4,
+                    "10. I have a best friend at work.":4,
+                    "11. In the last six months, someone at work has talked to me about my progress.":4,
+                    "12. This last year, I have had opportunities at work to learn and grow.":4
+                },
+                "team_wise_weightage": 4,
+                "role_wise_weightage": 4,
+                "manager_wise_weightage": 4
+            }
+        },
+        {
+            "report_name": "Engagement_Reports_curr_score_trend_org"
+        }
+    ]
+}
