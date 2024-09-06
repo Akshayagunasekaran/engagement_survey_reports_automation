@@ -7,7 +7,7 @@ import reader.config_reader as config_reader
 def master_sheet_updater(df, source_config):
     """
         Function to update the google sheet
-                Parameters:
+        Parameters:
         -----------
             df: Table to be updated
             source_config: File Location to update

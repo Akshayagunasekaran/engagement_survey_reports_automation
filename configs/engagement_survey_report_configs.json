@@ -14,6 +14,11 @@
                         "source_name": "emp_manager_mapping",
                         "source_file_name": "od_engagement_survey",
                         "source_sheet_name": "Emp Manager Mapping"
+                    },
+                    {
+                    "source_name": "emp_manager_mapping_data",
+                    "source_file_name": "od_engagement_survey",
+                    "source_sheet_name":"Responses Merge Mapping"
                     }
                 ]
             },
