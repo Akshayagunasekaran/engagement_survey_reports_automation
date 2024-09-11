@@ -74,9 +74,9 @@ def get_data_preprocessed(df_data_dict, data_pre_process_configs):
     master_sheet_configs = data_pre_process_configs["concat_master_config"]
     google_sheet_updater.master_sheet_updater(df_concat,master_sheet_configs)
     """
-
+    date = pd.to_datetime('now').strftime('%B_%Y')
         
-    df_concat.to_excel('Engagement_survey_merged_raw_data_july_test1.xlsx')
+    df_concat.to_excel("Engagement_survey_merged_raw_data_" + date + ".xlsx")
     return df_concat
 
 def get_engagement_reports_raw_data(source_configs):
@@ -115,24 +115,25 @@ def engagement_reports_generator():
     df_data = get_data_preprocessed(df_data, data_pre_process_configs)
     gen_rep_congig = report_config['org_wide_reports'] 
     df_rpts_dict = dict()
+    date = pd.to_datetime('now').strftime('%B_%Y')
 
     for key,value in gen_rep_congig.items():
         print("Report generating for ", key)
         if key == 'curr_score':
             df_curr_scr_rpt = current_score_report.get_curr_score_engagement_survey_rpt(df_data.copy(), report_config['scoring_weightage'], value )
             df_rpts_dict.update({key: df_curr_scr_rpt})
-            #df_curr_scr_rpt.to_excel(key + "_rpt_june.xlsx")
+            df_curr_scr_rpt.to_excel(key + "_" + date + ".xlsx")
             print("Report Generated for current score")
         
         elif key == "long_term_trend":
             df_long_trm_trend = long_term_trend_ques_rpt.get_long_term_trend_ques_rpt(df_data.copy(), report_config['scoring_weightage'], value )
             df_rpts_dict.update({key: df_long_trm_trend})
-            df_long_trm_trend.to_excel(key + "_rpt_cohort.xlsx")
+            df_long_trm_trend.to_excel(key + "_" + date + ".xlsx")
             print("Report generated for long term trend")
         elif key == "long_term_trend_emp":
             df_emp_long_trm_trend = emp_long_term_trend_rpt.get_emp_trend_rpt(df_data.copy(), report_config['scoring_weightage'] )
             df_rpts_dict.update({key: df_emp_long_trm_trend})
-            df_emp_long_trm_trend.to_excel(key+ "_sep.xlsx")
+            df_emp_long_trm_trend.to_excel(key + "_" + date + ".xlsx")
             print("Report generated for employee long term trend")
         else:
             df_long_trm_trend_team = long_term_trend_group_rpt.get_long_term_trend_rpt(df_data.copy(), report_config['scoring_weightage'], 'Team' )
@@ -140,8 +141,8 @@ def engagement_reports_generator():
             df_long_term_trend_cohort = long_term_trend_group_rpt.get_long_term_trend_rpt(df_data.copy(), report_config['scoring_weightage'], 'Cohort' )
             print("Cohort")
             df_rpts_dict.update({key: df_long_trm_trend_team})
-            df_long_trm_trend_team.to_excel("engagement_survey_responses_" +key + "_rpt_sep.xlsx")
-            df_long_term_trend_cohort.to_excel("cohort_sep.xlsx")
+            df_long_trm_trend_team.to_excel(key + "_" + date + ".xlsx")
+            df_long_term_trend_cohort.to_excel("Cohort" + "_" + date + ".xlsx")
 
 
     print("Save Done")
