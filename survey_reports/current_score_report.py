@@ -23,7 +23,7 @@ def get_curr_score_engagement_survey_rpt(df_data, scoring_weightage, report_conf
     # Checking for duplicates
     duplicate_check_col_name = report_config["duplicate_check_col_name"]
     df.drop_duplicates(subset= duplicate_check_col_name, keep = "last", inplace= True, ignore_index=True)
-
+    df['Average'] = df[list(questions_weightage.keys())].mean(axis=1)
     # Getting the number of empty rows to be added for the generated report
     empty_rows = report_config["empty_rows"]
 
