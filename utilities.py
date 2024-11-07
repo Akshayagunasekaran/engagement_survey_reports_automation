@@ -29,6 +29,21 @@ def column_better_readability(survey_months, rpt_cols_to_add, df):
 
     return df
 
+def nps_score_perc(series):
+
+    perc = (
+        (
+            (series >= 9).sum() -
+            (series <= 6).sum()
+        ) / series.count()
+    )
+    return perc
+def ques_score_perc(series):
+
+    perc = ((series >= 4).sum() / series.count()) * 100
+
+    return perc
+
 def question_better_readability(df, quest_list, col_add, insert_col_name, sort_cols):
     """
     """

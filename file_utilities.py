@@ -37,3 +37,28 @@ def read_sheet(file_path, sheet_name, skiprows=0):
     else:
         print('Loading done.')
         return data_frame
+
+def save_to_excel(df_sheet_dict, file_name, dir_path = get_gen_reports_dir_path(), index=False, engine='openpyxl'):
+    """
+    Function to save a data frame to excel using openpyxl engine
+
+    Parameters:
+    ----------
+    df_sheet_dict: dictionary
+        A dictionary containing sheet-dataframe key-value pairs
+    file_name: str
+        File name to save the data in
+    dir_path: str, optional
+        The directory path to save the file in. Default is the generated reports directory path
+    index: bool, optional
+        Boolean value indicating if row names need to be written. Default is False
+    engine: str
+        The name of the Excel engine to be used. xlsxwriter or openpyxl. Default is openpyxl.
+    """
+    file_path = os.path.join(dir_path, file_name)
+    datatoexcel = pd.ExcelWriter(file_path, engine=engine)
+    for key in df_sheet_dict.keys():
+        df_sheet_dict[key].to_excel(datatoexcel, sheet_name=key, index=index)
+        print('Saving ', key, ' sheet in excel file: ', file_name, '....')
+    datatoexcel.close()
+    print('Save done')

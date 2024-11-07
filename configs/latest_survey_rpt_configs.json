@@ -1,0 +1,31 @@
+{
+  "report_configs": [
+    {
+      "report_name": "Latest Survey Reports",
+      "report_code": "LTEST_SUR_RPT",
+      "filter_month_cols":["Sep 2024"],
+      "group_cols": [ "Survey Assesment Window","Team","Reporting Manager", "Cohort", "Name", "Average"],
+      "colour_coding": {
+        "val_greater_than_colour": "#ACE1AF",
+        "val_greater_than_threshold": 4,
+        "val_lesser_than_colour": "#F4CCCC",
+        "val_lesser_than_threshold": 3,
+        "percentage": {
+          "greater_than": {
+            "val_one":0.90,
+            "hex_code":"#ACE1AF"
+          },
+          "between": {
+            "val_one": 0.80,
+            "val_two": 0.90,
+            "hex_code_code": "#C9DAF8"
+          },
+          "less_than": {
+            "val_one": 0.80,
+            "hex_code":"#F4CCCC"
+          }
+        }
+      }
+    }
+  ]
+}

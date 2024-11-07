@@ -16,7 +16,7 @@ def map_team(team, team_clubbing_config):
         if team in key:
             return value
     return team
-def get_data_preprocessed(df_data_dict, data_pre_process_configs):
+def get_data_preprocessed(df_data_dict, data_pre_process_configs, question_id_mapping):
     """
     Function to prepare the data before creating the reports
 
@@ -61,13 +61,15 @@ def get_data_preprocessed(df_data_dict, data_pre_process_configs):
             df = merge_df[merge_df[new_col_name].isin(filter_val)]
             df[survey_month_range_col] = month
             # Removing the duplicates in the dataset
-            df.drop_duplicates(subset=dup_col_subset, keep= 'last', ignore_index = True, inplace = True)
+            df.drop_duplicates(subset=dup_col_subset, keep= 'last', ignore_index=True, inplace=True)
             # Updating it with the master dataframe
             df_processed = pd.concat([df_processed, df])
     
     print("Data Pre-Process is done")
     # Concatenating with the master dataframe
     df_concat = pd.concat([df_data_dict['emp_manager_mapping_data'],df_processed], ignore_index=True)
+    # Changing the column name to better readability
+    df_concat.rename(columns=question_id_mapping, inplace=True)
     """
     print("Updating the master google worksheet....")
     # Getting the master sheet configs to update the google master shet
@@ -111,8 +113,11 @@ def engagement_reports_generator():
     source_configs = report_config['source_config']
     sources = source_configs['sources']
     data_pre_process_configs = report_config["data_pre_process_configs"]
+    question_id_mapping = report_config['question_id_mapping']
+    # Reading the google sheets
     df_data = get_engagement_reports_raw_data(sources)
-    df_data = get_data_preprocessed(df_data, data_pre_process_configs)
+    # Getting the data pre-processed
+    df_data = get_data_preprocessed(df_data, data_pre_process_configs, question_id_mapping)
     gen_rep_congig = report_config['org_wide_reports'] 
     df_rpts_dict = dict()
     date = pd.to_datetime('now').strftime('%B_%Y')
