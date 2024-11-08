@@ -8,6 +8,7 @@ import survey_reports.current_score_report as current_score_report
 import survey_reports.emp_long_term_trend_rpt as emp_long_term_trend_rpt
 import survey_reports.long_term_trend_ques_rpt as long_term_trend_ques_rpt
 import survey_reports.long_term_trend_group_rpt as long_term_trend_group_rpt
+import  utilities as utilities
 
 import file_updater.google_sheet_updater as google_sheet_updater
 
@@ -122,18 +123,18 @@ def engagement_reports_generator():
         if key == 'curr_score':
             df_curr_scr_rpt = current_score_report.get_curr_score_engagement_survey_rpt(df_data.copy(), report_config['scoring_weightage'], value )
             df_rpts_dict.update({key: df_curr_scr_rpt})
-            df_curr_scr_rpt.to_excel(key + "_" + date + ".xlsx")
+            #df_curr_scr_rpt.to_excel(key + "_" + date + ".xlsx")
             print("Report Generated for current score")
         
         elif key == "long_term_trend":
             df_long_trm_trend = long_term_trend_ques_rpt.get_long_term_trend_ques_rpt(df_data.copy(), report_config['scoring_weightage'], value )
             df_rpts_dict.update({key: df_long_trm_trend})
-            df_long_trm_trend.to_excel(key + "_" + date + ".xlsx")
+            #df_long_trm_trend.to_excel(key + "_" + date + ".xlsx")
             print("Report generated for long term trend")
         elif key == "long_term_trend_emp":
             df_emp_long_trm_trend = emp_long_term_trend_rpt.get_emp_trend_rpt(df_data.copy(), report_config['scoring_weightage'] )
             df_rpts_dict.update({key: df_emp_long_trm_trend})
-            df_emp_long_trm_trend.to_excel(key + "_" + date + ".xlsx")
+            #df_emp_long_trm_trend.to_excel(key + "_" + date + ".xlsx")
             print("Report generated for employee long term trend")
         else:
             df_long_trm_trend_team = long_term_trend_group_rpt.get_long_term_trend_rpt(df_data.copy(), report_config['scoring_weightage'], 'Team' )
@@ -141,9 +142,11 @@ def engagement_reports_generator():
             df_long_term_trend_cohort = long_term_trend_group_rpt.get_long_term_trend_rpt(df_data.copy(), report_config['scoring_weightage'], 'Cohort' )
             print("Cohort")
             df_rpts_dict.update({key: df_long_trm_trend_team})
-            df_long_trm_trend_team.to_excel(key + "_" + date + ".xlsx")
-            df_long_term_trend_cohort.to_excel("Cohort" + "_" + date + ".xlsx")
-
+            df_rpts_dict.update({"Cohort": df_long_term_trend_cohort})
+            #df_long_trm_trend_team.to_excel(key + "_" + date + ".xlsx")
+            #df_long_term_trend_cohort.to_excel("Cohort" + "_" + date + ".xlsx")
+    print(df_rpts_dict.keys())
+    utilities.save_to_excel(df_rpts_dict, "Engagement Survey Reports " + date + ".xlsx", r"C:\Users\SSEMIS-Rashmi\engagement_survey_reports")
 
     print("Save Done")
 if __name__ == "__main__":

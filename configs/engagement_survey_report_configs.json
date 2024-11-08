@@ -29,7 +29,7 @@
                     "source_sheet_name":"responses"
                 },
                 "filter_month_cols": {
-                    "Sep 2024": ["Sep 2024"]
+                    "Nov 2024": ["Oct 2024", "Nov 2024"]
                 },
                 "month_year":{
                     "col_check": "Timestamp",
@@ -54,7 +54,7 @@
             
             "org_wide_reports":{
                 "curr_score": {
-                    "filter_month_cols": ["Sep 2024"],
+                    "filter_month_cols": ["Nov 2024"],
                     "report_cols": [ "Team","Reporting Manager", "Cohort", "Name", "Average"],
                     "metric_cols": ["Overall Org", "Team" ,"Reporting Manager", "Cohort", "Role"],
                     "col_to_add_metric_name": "Team",
