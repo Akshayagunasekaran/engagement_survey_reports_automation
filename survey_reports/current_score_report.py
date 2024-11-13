@@ -47,7 +47,7 @@ def get_curr_score_engagement_survey_rpt(df_data, scoring_weightage, report_conf
 
 def get_curr_metric_engagement_survey_rpt(df_data, report_config):
     """
-
+    Get the current score percentage
     :param df_data:
     :param report_config:
     :return:
