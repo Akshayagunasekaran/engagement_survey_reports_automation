@@ -3,19 +3,19 @@ import reports_automation_v1.utilities as utilities
 
 
 
-def get_curr_score_engagement_survey_rpt(df_data, scoring_weightage, report_config):
+def get_curr_score_engagement_survey_rpt(df_data, qid, report_config):
     """
         Function to create a report based on the scores
     """
+
+
     # Getting the question weightage from the report configs
     questions_weightage = scoring_weightage['question_weightage']
     print(df_data)
     # Declaring the report columns for the generated report
-    group_cols = report_config['group_cols']
+    report_cols = report_config['rpt_cols']
 
-    # Getting the Dataset for the current month
-    filter_month = report_config['filter_month_cols']
-    df = df_data[df_data['Survey Assesment Window'].isin(filter_month)]
+
 
     # Adding Average to the current month report
     df['Average'] = df[list(questions_weightage.keys())].mean(axis=1)

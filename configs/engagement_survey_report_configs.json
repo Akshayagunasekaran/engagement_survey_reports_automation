@@ -83,69 +83,18 @@
                     }
                 },
                 "long_term_trend": {
-                    "metric_cols": ["Survey Assesment Window"],
-                    "filter_month_cols": {
-                        "Jan 2023": ["Jan 2023"],
-                        "Mar 2023": ["Mar 2023"],
-                        "May 2023": ["May 2023", "Jun 2023"],
-                        "Aug 2023": ["Jul 2023", "Aug 2023"],
-                        "Oct 2023": ["Oct 2023"],
-                        "Dec 2023": ["Dec 2023", "Jan 2024"],
-                        "Feb 2024": ["Feb 2024"],
-                        "Mar 2024": ["Mar 2024","Apr 2024"],
-                        "May 2024": ["May 2024"]
-                    }
+                    "metric_cols": ["Survey Assesment Window"]
                 },
                 "long_term_trend_emp": {
-                    "metric_cols": ["Survey Assesment Window"],
-                    "filter_month_cols": {
-                        "Jan 2023": ["Jan 2023"],
-                        "Mar 2023": ["Mar 2023"],
-                        "May 2023": ["May 2023", "Jun 2023"],
-                        "Aug 2023": ["Jul 2023", "Aug 2023"],
-                        "Oct 2023": ["Oct 2023"],
-                        "Dec 2023": ["Dec 2023", "Jan 2024"],
-                        "Feb 2024": ["Feb 2024"],
-                        "Mar 2024": ["Mar 2024","Apr 2024"],
-                        "May 2024": ["May 2024"]
-                    }
+                    "metric_cols": ["Survey Assesment Window"]
                 },
                 "long_term_trend_team": {
                     "metric_cols": ["Team"],
-                    "report_cols": ["Survey Assesment Window", "Team"],
-                    "filter_month_cols": {
-                        "Jan 2023": ["Jan 2023"],
-                        "Mar 2023": ["Mar 2023"],
-                        "May 2023": ["May 2023", "Jun 2023"],
-                        "Aug 2023": ["Jul 2023", "Aug 2023"],
-                        "Oct 2023": ["Oct 2023"],
-                        "Dec 2023": ["Dec 2023", "Jan 2024"],
-                        "Feb 2024": ["Feb 2024"],
-                        "Mar 2024": ["Mar 2024","Apr 2024"],
-                        "May 2024": ["May 2024"]
+                    "report_cols": ["Survey Assesment Window", "Team"]
                     }
                 }
             },
-            "scoring_weightage": {
-                "default_weightage": 4,
-                "question_weightage": {
-                    "1. I know what is expected of me at work":4,
-                    "2. I have the materials and equipment I need to do my work right.":4,
-                    "3. At work, I have the opportunity to do what I do best every day.":4,
-                    "4. In the last seven days, I have received recognition or praise for doing good work.":4,
-                    "5. My supervisor, or someone at work, seems to care about me as a person.":4,
-                    "6. There is someone at work who encourages my development.":4,
-                    "7. At work, my opinions seem to count.":4,
-                    "8. The mission or purpose of my company makes me feel my job is important.":4,
-                    "9. My associates or fellow employees are committed to doing quality work.":4,
-                    "10. I have a best friend at work.":4,
-                    "11. In the last six months, someone at work has talked to me about my progress.":4,
-                    "12. This last year, I have had opportunities at work to learn and grow.":4
-                },
-                "team_wise_weightage": 4,
-                "role_wise_weightage": 4,
-                "manager_wise_weightage": 4
-            },
+            "scoring_weightage": 4,
             "question_id_mapping": {
                     "1. I know what is expected of me at work": "q1",
                     "2. I have the materials and equipment I need to do my work right.": "q2",
@@ -160,7 +109,7 @@
                     "11. In the last six months, someone at work has talked to me about my progress.": "q11",
                     "12. This last year, I have had opportunities at work to learn and grow.": "q12",
                     "How likely is it that you would recommend TEA to a friend or a colleague?": "NPS"
-                }
+                },
         },
         {
             "report_name": "Engagement_Reports_curr_score_trend_org"

@@ -1,0 +1,152 @@
+{
+  "report_configs": [
+    {
+      "report_name": "Q12 Engagement Survey Dashboard",
+      "report_code": "Q12_FIRST_LEVEL_ANALYSIS",
+      "pre_process_configs": {
+        "read_config": {
+          "sources": [
+            {
+              "source_name": "responses_data",
+              "source_file_name": "od_engagement_survey",
+              "source_sheet_name": "Engagement Survey Responses"
+            },
+            {
+              "source_name": "emp_manager_mapping",
+              "source_file_name": "od_engagement_survey",
+              "source_sheet_name": "Emp Manager Mapping"
+            }
+          ],
+          "merge_config": {
+            "left_dataframe": "responses_data",
+            "right_dataframe": "emp_manager_mapping",
+            "join_on": ["Email"],
+            "mege_type": "inner"
+          },
+          "data_clean_configs": {
+            "filter_month_cols": {
+              "Sep 2024": ["Sep 2024"]
+            },
+            "exclude_val_flag": "False",
+            "exclude_values": {
+              "Team": ["Delhi Govt"]
+            },
+            "drop_duplicates_subset": ["Name", "Email"],
+            "update_config": {
+              "concat_master_config":{
+                "source_name": "emp_manager_mastersheet",
+                "source_file_name": "engagement_survey_reponses_master",
+                "source_sheet_name":"responses"
+              }
+            }
+          },
+          "question_id_mapping": {
+            "1. I know what is expected of me at work": "q1",
+            "2. I have the materials and equipment I need to do my work right.": "q2",
+            "3. At work, I have the opportunity to do what I do best every day.": "q3",
+            "4. In the last seven days, I have received recognition or praise for doing good work.": "q4",
+            "5. My supervisor, or someone at work, seems to care about me as a person.": "q5",
+            "6. There is someone at work who encourages my development.": "q6",
+            "7. At work, my opinions seem to count.": "q7",
+            "8. The mission or purpose of my company makes me feel my job is important.": "q8",
+            "9. My associates or fellow employees are committed to doing quality work.": "q9",
+            "10. I have a best friend at work.": "q10",
+            "11. In the last six months, someone at work has talked to me about my progress.": "q11",
+            "12. This last year, I have had opportunities at work to learn and grow.": "q12",
+            "How likely is it that you would recommend TEA to a friend or a colleague?": "NPS"
+          },
+          "custom_report_configs": {
+            "curr_score": {
+              "report_cols": [ "Team","Reporting Manager", "Cohort", "Name", "Average"],
+              "metric_config": ["Overall Org"],
+              "format_configs": {
+                "percentage_formatting": {
+                  "greater_than_equal": {
+                    "val": [0.90],
+                    "hex_code": "#ACE1AF"
+                  },
+                  "between": {
+                    "val": [0.80, 0.90],
+                    "hex_code": "#C9DAF8"
+                  },
+                  "lesser_than": {
+                    "val": [0.80],
+                    "hex_code": "#F4CCCC"
+                  }
+                },
+                "val_formatting": {
+                  "greater_than_equal": {
+                    "val": 4,
+                    "hex_code": "#ACE1AF"
+                  },
+                  "lesser_than": {
+                    "val": 3,
+                    "hex_code": "#F4CCCC"
+                  }
+                },
+                "curr_score_metric": {
+                  "metric_cols": ["Overall Org", "Team" ,"Reporting Manager", "Cohort", "Role"],
+                  "format_configs": {
+                    "percentage_formatting": {
+                      "greater_than_equal": {
+                        "val": [0.90],
+                        "hex_code": "#ACE1AF"
+                      },
+                      "between": {
+                        "val": [0.80, 0.90],
+                        "hex_code": "#C9DAF8"
+                      },
+                      "lesser_than": {
+                        "val": [0.80],
+                        "hex_code": "#F4CCCC"
+                      }
+                    },
+                    "val_formatting": {
+                      "greater_than_equal": {
+                        "val": 4,
+                        "hex_code": "#ACE1AF"
+                      },
+                      "lesser_than": {
+                        "val": 3,
+                        "hex_code": "#F4CCCC"
+                      }
+                    }
+                  }
+              },
+              "long_term_trend_org": {
+                "metric_cols": "Survey Assessment Window",
+                "format_configs": {
+                    "percentage_formatting": {
+                      "greater_than_equal": {
+                        "val": [0.90],
+                        "hex_code": "#ACE1AF"
+                      },
+                      "between": {
+                        "val": [0.80, 0.90],
+                        "hex_code": "#C9DAF8"
+                      },
+                      "lesser_than": {
+                        "val": [0.80],
+                        "hex_code": "#F4CCCC"
+                      }
+                    },
+                    "val_formatting": {
+                      "greater_than_equal": {
+                        "val": 4,
+                        "hex_code": "#ACE1AF"
+                      },
+                      "lesser_than": {
+                        "val": 3,
+                        "hex_code": "#F4CCCC"
+                      }
+                    }
+                  }
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
