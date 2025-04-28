@@ -29,13 +29,13 @@
                     "source_sheet_name":"responses"
                 },
                 "filter_month_cols": {
-                    "Nov 2024": ["Oct 2024", "Nov 2024"]
+                    "Apr 2025": ["Mar 2025", "Apr 2025"]
                 },
                 "month_year":{
                     "col_check": "Timestamp",
                     "insert_col_name": "Month & Year",
                     "updated_col_name": "Survey Assesment Window",
-                    "duplicate_check_col_name": ["Name"]
+                    "duplicate_check_col_name": ["Email Address"]
                 },
                 "exclude_val_flag": "True",
                 "exclude_values":{
@@ -44,7 +44,7 @@
                 "merge_sources": {
                     "left_dataframe": "responses_data",
                     "right_dataframe": "emp_manager_mapping",
-                    "grouping_cols": ["Name"],
+                    "grouping_cols": ["Email Address"],
                     "how": "inner"
                 },
                 "concat_sources": {
@@ -54,7 +54,7 @@
             
             "org_wide_reports":{
                 "curr_score": {
-                    "filter_month_cols": ["Nov 2024"],
+                    "filter_month_cols": ["Apr 2025"],
                     "report_cols": [ "Team","Reporting Manager", "Cohort", "Name", "Average"],
                     "metric_cols": ["Overall Org", "Team" ,"Reporting Manager", "Cohort", "Role"],
                     "col_to_add_metric_name": "Team",
